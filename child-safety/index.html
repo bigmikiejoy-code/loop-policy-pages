@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loop Child Safety Standards</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111a2e;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --line: #24324f;
+      --accent: #7fb1ff;
+      --good: #86efac;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 500px at 50% -15%, #1f2d4d 0%, var(--bg) 55%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 32px 18px 56px; }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+    h1 { margin: 0 0 8px; font-size: 1.6rem; }
+    h2 { margin: 22px 0 8px; font-size: 1.1rem; }
+    p, li { color: var(--text); }
+    .muted { color: var(--muted); }
+    a { color: var(--accent); }
+    .ok { color: var(--good); font-weight: 600; }
+    ul { margin-top: 8px; }
+    footer { margin-top: 14px; color: var(--muted); font-size: .92rem; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Loop Child Safety Standards</h1>
+      <p class="muted">
+        This page describes Loop’s standards and response process for child sexual abuse and exploitation (CSAE/CSAM),
+        including reporting and enforcement practices.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>1) Zero tolerance policy</h2>
+      <p>
+        Loop has a <strong>zero tolerance</strong> policy for child sexual abuse and exploitation content or behavior.
+        Any account, profile, message, image, or activity that appears to involve CSAE/CSAM is prohibited.
+      </p>
+
+      <h2>2) In-app reporting and moderation</h2>
+      <ul>
+        <li>Users can report inappropriate content in-app (including venue photo reporting).</li>
+        <li>Reported content is reviewed and can be removed.</li>
+        <li>Accounts that violate this policy may be suspended or permanently removed.</li>
+      </ul>
+
+      <h2>3) Escalation and legal compliance</h2>
+      <p>
+        Loop complies with applicable child safety laws and cooperates with relevant regional and national authorities when required.
+      </p>
+
+      <h2>4) Contact for child safety matters</h2>
+      <p>
+        Email: <a href="mailto:loop@loopappsupport.com">loop@loopappsupport.com</a>
+      </p>
+
+      <h2>5) Scope</h2>
+      <p>
+        These standards apply to all users and all content submitted through the app, including text, profile details, and uploaded images.
+      </p>
+
+      <p class="ok">Last updated: 2026-02-18</p>
+      <footer>
+        If you believe a child is in immediate danger, contact local emergency services immediately.
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
