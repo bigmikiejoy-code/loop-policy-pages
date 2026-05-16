@@ -1,26 +1,378 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loop Legal and Safety</title>
-  <style>
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; padding: 32px; background: #0b1220; color: #e5e7eb; }
-    .card { max-width: 760px; margin: 0 auto; border: 1px solid #334155; border-radius: 12px; padding: 20px; background: #111827; }
-    h1 { margin-top: 0; }
-    a { color: #93c5fd; }
-    li { margin: 8px 0; }
-  </style>
-</head>
-<body>
-  <main class="card">
-    <h1>Loop Legal and Safety</h1>
-    <ul>
-      <li><a href="/account-deletion/">Account Deletion</a></li>
-      <li><a href="/child-safety/">Child Safety Standards</a></li>
-      <li><a href="/privacy/">Privacy Policy</a></li>
-      <li><a href="/terms/">Terms</a></li>
-    </ul>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loop – Discover nearby venues and real-world connections</title>
+    <meta
+      name="description"
+      content="Loop is a location-based social app for adults focused on discovering nearby venues and making real-world connections."
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #020617;
+        color: #e5e7eb;
+        line-height: 1.6;
+      }
+      .page {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 32px 16px 56px;
+      }
+      a {
+        color: #38bdf8;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #f9fafb;
+        margin-top: 0;
+        margin-bottom: 0.6rem;
+      }
+      p {
+        margin: 0.3rem 0 0.8rem;
+        font-size: 0.97rem;
+      }
+      .hero,
+      .card,
+      .links-card,
+      .feature {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(255, 255, 255, 0.015)
+        );
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-radius: 18px;
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.65);
+      }
+      .hero {
+        padding: 28px 22px;
+        margin-bottom: 18px;
+        overflow: hidden;
+        position: relative;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: -20% auto auto -10%;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(56, 189, 248, 0.16) 0%,
+          rgba(56, 189, 248, 0) 70%
+        );
+        pointer-events: none;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -10% -25% auto;
+        width: 320px;
+        height: 320px;
+        background: radial-gradient(
+          circle,
+          rgba(168, 85, 247, 0.14) 0%,
+          rgba(168, 85, 247, 0) 72%
+        );
+        pointer-events: none;
+      }
+      .brand {
+        position: relative;
+        font-weight: 700;
+        font-size: 1.05rem;
+        margin-bottom: 0.9rem;
+        letter-spacing: 0.02em;
+      }
+      .hero h1 {
+        position: relative;
+        font-size: clamp(1.9rem, 4vw, 3rem);
+        line-height: 1.08;
+        max-width: 760px;
+      }
+      .hero p {
+        position: relative;
+        max-width: 720px;
+        font-size: 1.03rem;
+        opacity: 0.92;
+      }
+      .hero-actions {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 1.2rem;
+      }
+      .pill {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: rgba(15, 23, 42, 0.65);
+        color: #f9fafb;
+        font-size: 0.92rem;
+      }
+      .section-title {
+        margin: 1.9rem 0 0.9rem;
+        font-size: 1.35rem;
+      }
+      .feature-list {
+        display: grid;
+        gap: 16px;
+      }
+      .feature {
+        padding: 16px;
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        gap: 18px;
+        align-items: center;
+      }
+      .feature-media {
+        width: 100%;
+      }
+      .shot-frame {
+        width: 100%;
+        aspect-ratio: 9 / 19.5;
+        border-radius: 22px;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        background:
+          radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 35%),
+          radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.12), transparent 35%),
+          rgba(15, 23, 42, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+      .shot-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .shot-placeholder {
+        padding: 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: rgba(229, 231, 235, 0.75);
+      }
+      .feature h3 {
+        font-size: 1.12rem;
+        margin-bottom: 0.35rem;
+      }
+      .muted {
+        opacity: 0.8;
+        font-size: 0.9rem;
+      }
+      .links-card {
+        margin-top: 18px;
+        padding: 20px 18px;
+      }
+      .links-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 20px;
+        margin-top: 0.9rem;
+      }
+      .link-item {
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: rgba(15, 23, 42, 0.55);
+        border: 1px solid rgba(148, 163, 184, 0.25);
+      }
+      footer {
+        margin-top: 18px;
+        font-size: 0.86rem;
+        opacity: 0.72;
+      }
+      .note {
+        margin-top: 0.75rem;
+        font-size: 0.85rem;
+        opacity: 0.72;
+      }
+      @media (max-width: 860px) {
+        .feature {
+          grid-template-columns: 1fr;
+        }
+        .links-list {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          padding: 24px 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <section class="hero">
+        <div class="brand">Loop</div>
+        <h1>Discover nearby venues and make real-world connections</h1>
+        <p>
+          Loop is a location-based social app for adults focused on discovering
+          nearby places, exploring the local vibe, and connecting more naturally
+          through shared venues and local activity.
+        </p>
+        <div class="hero-actions">
+          <span class="pill">Discover nearby venues</span>
+          <span class="pill">See the local vibe</span>
+          <span class="pill">Chat naturally</span>
+          <span class="pill">Ask for help in-app</span>
+        </div>
+      </section>
+
+      <h2 class="section-title">How Loop works</h2>
+
+      <section class="feature-list">
+        <article class="feature">
+          <div class="feature-media">
+            <div class="shot-frame">
+              <!-- Replace screenshot-1.jpg with your real image later -->
+              <!-- <img src="images/screenshot-1.jpg" alt="Loop nearby venues screen" /> -->
+              <div class="shot-placeholder">
+                Screenshot slot 1<br />
+                Nearby screen / map / selected venue
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Discover nearby venues</h3>
+            <p>
+              Explore places around you and see what is nearby through the app’s
+              map and venue discovery experience.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-media">
+            <div class="shot-frame">
+              <!-- Replace screenshot-2.jpg with your real image later -->
+              <!-- <img src="images/screenshot-2.jpg" alt="Loop venue details screen" /> -->
+              <div class="shot-placeholder">
+                Screenshot slot 2<br />
+                Venue details / image / vibe / comments
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Get a feel for the place</h3>
+            <p>
+              Browse venue details, atmosphere, and activity so you can get a
+              better sense of a place before heading there.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-media">
+            <div class="shot-frame">
+              <!-- Replace screenshot-3.jpg with your real image later -->
+              <!-- <img src="images/screenshot-3.jpg" alt="Loop matches or discovery screen" /> -->
+              <div class="shot-placeholder">
+                Screenshot slot 3<br />
+                Matches / encounters / social discovery
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Meet through shared places</h3>
+            <p>
+              Loop is designed to help people connect more naturally through
+              location, shared venues, and local context rather than only
+              through traditional matching.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-media">
+            <div class="shot-frame">
+              <!-- Replace screenshot-4.jpg with your real image later -->
+              <!-- <img src="images/screenshot-4.jpg" alt="Loop chat screen" /> -->
+              <div class="shot-placeholder">
+                Screenshot slot 4<br />
+                Chat screen / natural conversation
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Chat naturally</h3>
+            <p>
+              Start conversations around places, plans, and shared local
+              interest through the app’s social and chat features.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-media">
+            <div class="shot-frame">
+              <!-- Replace screenshot-5.jpg with your real image later -->
+              <!-- <img src="images/screenshot-5.jpg" alt="Loop Ask feature screen" /> -->
+              <div class="shot-placeholder">
+                Screenshot slot 5<br />
+                Ask feature / help / guidance
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Need help? Just ask</h3>
+            <p>
+              The in-app Ask feature helps users understand features and find
+              their way around the app more easily.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature">
+          <div class="feature-media">
+            <div class="shot-frame">
+              <!-- Replace screenshot-6.jpg with your real image later -->
+              <!-- <img src="images/screenshot-6.jpg" alt="Loop settings and themes screen" /> -->
+              <div class="shot-placeholder">
+                Screenshot slot 6<br />
+                Settings / themes / personalisation
+              </div>
+            </div>
+          </div>
+          <div>
+            <h3>Make it your own</h3>
+            <p>
+              Personalise the experience with themes and settings that help the
+              app feel more like your own.
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="links-card">
+        <h2>Important links</h2>
+        <p class="muted">
+          For policy, safety, and support information, use the links below.
+        </p>
+
+        <div class="links-list">
+          <a class="link-item" href="/privacy/">Privacy Policy</a>
+          <a class="link-item" href="/terms/">Terms of Use</a>
+          <a class="link-item" href="/account-deletion/">Account Deletion</a>
+          <a class="link-item" href="/child-safety/">Child Safety Standards</a>
+          <a class="link-item" href="mailto:support@loopappsupport.com">Contact Support</a>
+        </div>
+
+        <div class="note">
+          Loop is intended for adults aged 18 and over.
+        </div>
+      </section>
+    </div>
+  </body>
 </html>
