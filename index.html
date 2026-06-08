@@ -47,6 +47,7 @@
       }
 
       .hero,
+      .join-card,
       .card,
       .links-card,
       .feature {
@@ -135,6 +136,93 @@
         font-size: 0.92rem;
       }
 
+      .join-card {
+        margin: 18px 0 22px;
+        padding: 22px 20px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 180px;
+        gap: 24px;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .join-card::before {
+        content: "";
+        position: absolute;
+        inset: -30% auto auto -10%;
+        width: 260px;
+        height: 260px;
+        background: radial-gradient(
+          circle,
+          rgba(56, 189, 248, 0.13) 0%,
+          rgba(56, 189, 248, 0) 70%
+        );
+        pointer-events: none;
+      }
+
+      .join-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -12% -35% auto;
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(168, 85, 247, 0.13) 0%,
+          rgba(168, 85, 247, 0) 72%
+        );
+        pointer-events: none;
+      }
+
+      .join-content,
+      .qr-box {
+        position: relative;
+      }
+
+      .join-card h2 {
+        margin-bottom: 0.45rem;
+        font-size: 1.45rem;
+      }
+
+      .join-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 1rem;
+      }
+
+      .primary-button {
+        display: inline-block;
+        padding: 11px 17px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #38bdf8, #a855f7);
+        color: #ffffff;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 14px 35px rgba(56, 189, 248, 0.22);
+      }
+
+      .primary-button:hover {
+        text-decoration: none;
+        filter: brightness(1.08);
+      }
+
+      .qr-box {
+        justify-self: center;
+        width: 160px;
+        padding: 10px;
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+      }
+
+      .qr-box img {
+        width: 100%;
+        display: block;
+        border-radius: 10px;
+      }
+
       .section-title {
         margin: 1.9rem 0 0.9rem;
         font-size: 1.35rem;
@@ -146,11 +234,12 @@
       }
 
       .feature {
-        padding: 16px;
+        padding: 18px;
         display: grid;
-        grid-template-columns: minmax(220px, 300px) 1fr;
-        gap: 22px;
+        grid-template-columns: minmax(220px, 300px) minmax(0, 560px);
+        gap: 28px;
         align-items: center;
+        justify-content: start;
       }
 
       .feature-media {
@@ -241,6 +330,18 @@
           max-width: 340px;
         }
       }
+
+      @media (max-width: 700px) {
+        .join-card {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .qr-box {
+          width: 150px;
+          justify-self: start;
+        }
+      }
     </style>
   </head>
 
@@ -259,6 +360,39 @@
           <span class="pill">Read the vibe</span>
           <span class="pill">Pick the place</span>
           <span class="pill">Make plans naturally</span>
+        </div>
+      </section>
+
+      <section class="join-card">
+        <div class="join-content">
+          <h2>Join the open test</h2>
+          <p>
+            Loop Venues is now open for Android testing on Google Play. Try the
+            app, explore nearby venues, and send honest feedback to help shape
+            the launch.
+          </p>
+          <p class="muted">
+            18+ only · Android open testing · Exeter and UK testers welcome.
+          </p>
+
+          <div class="join-actions">
+            <a
+              class="primary-button"
+              href="https://play.google.com/apps/testing/com.loopapp.loopdating"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Join on Google Play
+            </a>
+            <span class="pill">Scan the QR code</span>
+          </div>
+        </div>
+
+        <div class="qr-box">
+          <img
+            src="assets/loop_venues_open_test_qr.png"
+            alt="QR code to join the Loop Venues open test on Google Play"
+          />
         </div>
       </section>
 
@@ -397,5 +531,7 @@
         </div>
       </section>
     </div>
+  </body>
+</html>
   </body>
 </html>
