@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>Loop – Support & Legal</title>
+    <meta
+      name="description"
+      content="Support and legal information for the Loop dating app."
+    />
+
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #020617;
+        --card: #020617;
+        --border: rgba(148, 163, 184, 0.5);
+        --accent: #22c55e;
+        --accent-soft: rgba(34, 197, 94, 0.1);
+        --text-main: #e5e7eb;
+        --text-muted: #9ca3af;
+        --danger: #f97373;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: radial-gradient(circle at top, #0f172a 0, #020617 55%);
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+      }
+
+      .shell {
+        max-width: 640px;
+        width: 100%;
+      }
+
+      .card {
+        background: rgba(2, 6, 23, 0.92);
+        border-radius: 24px;
+        border: 1px solid var(--border);
+        padding: 28px 22px;
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.75);
+        backdrop-filter: blur(18px);
+      }
+
+      @media (min-width: 640px) {
+        .card {
+          padding: 32px 28px;
+        }
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.5);
+        font-size: 11px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        margin-bottom: 12px;
+      }
+
+      .badge-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--accent);
+        box-shadow: 0 0 0 4px var(--accent-soft);
+      }
+
+      h1 {
+        margin: 0 0 4px;
+        font-size: 26px;
+        letter-spacing: -0.02em;
+      }
+
+      .subtitle {
+        margin: 0 0 18px;
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .app-name {
+        font-weight: 600;
+        color: #f9fafb;
+      }
+
+      .section {
+        margin-top: 18px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(30, 64, 175, 0.55);
+      }
+
+      .section-title {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+
+      .link-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 6px;
+      }
+
+      .link-list a {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .link-list a span {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      .link-list a:hover span {
+        text-decoration-thickness: 2px;
+      }
+
+      .external-icon {
+        font-size: 12px;
+        opacity: 0.8;
+      }
+
+      .meta {
+        margin-top: 16px;
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      .meta strong {
+        color: #e5e7eb;
+        font-weight: 500;
+      }
+
+      .meta a {
+        color: var(--accent);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+
+      .footnote {
+        margin-top: 10px;
+        font-size: 11px;
+        color: var(--text-muted);
+      }
+
+      footer {
+        margin-top: 12px;
+        font-size: 11px;
+        color: var(--text-muted);
+        text-align: center;
+      }
+
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Loop · Support & Legal
+        </div>
+
+        <h1>Loop app support</h1>
+        <p class="subtitle">
+          This page is operated by <span class="app-name">Loop</span> and
+          provides links to our legal documents and contact details for
+          questions about your account or data.
+        </p>
+
+        <div class="section">
+          <h2 class="section-title">Legal</h2>
+          <ul class="link-list">
+            <li>
+              <a href="/privacy">
+                <span>Privacy Policy</span>
+                <span class="external-icon">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="/terms">
+                <span>Terms of Use</span>
+                <span class="external-icon">↗</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Support</h2>
+          <p class="meta">
+            For help with the app, account issues or privacy questions, you can
+            email us at
+            <br />
+            <strong>
+              <a href="mailto:support@loopappsupport.com">
+                support@loopappsupport.com
+              </a>
+            </strong>
+            .
+          </p>
+          <p class="footnote">
+            When contacting support, please avoid sharing sensitive information
+            (like full ID documents) unless we explicitly request it.
+          </p>
+        </div>
+
+        <footer>
+          &copy; <span id="year"></span> Loop. All rights reserved.
+        </footer>
+      </section>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent =
+        new Date().getFullYear().toString();
+    </script>
+  </body>
+</html>
