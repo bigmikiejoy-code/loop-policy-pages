@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loop — print cards</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, system-ui, "Segoe UI", sans-serif; margin: 0; background: #f1f5f9; }
+
+    .toolbar { padding: 16px 20px; background: #0b1020; color: #e2e8f0; }
+    .toolbar h1 { font-size: 16px; margin: 0 0 8px; }
+    .toolbar p { font-size: 13px; margin: 4px 0; color: #94a3b8; }
+    .toolbar code { background: #1e293b; padding: 1px 6px; border-radius: 4px; }
+    .toolbar input { padding: 8px 10px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: #e2e8f0; font-size: 14px; width: 160px; }
+    .toolbar button { padding: 8px 14px; border-radius: 8px; border: 0; background: #38bdf8; color: #0b1020; font-weight: 700; font-size: 14px; cursor: pointer; margin-left: 8px; }
+
+    .sheet { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; padding: 10mm; max-width: 210mm; margin: 0 auto; background: white; }
+    .card {
+      border: 1.5px dashed #94a3b8; border-radius: 6px; padding: 10mm 8mm;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      break-inside: avoid; background: white;
+    }
+    .hook { font-size: 17px; font-weight: 800; color: #0f172a; line-height: 1.3; min-height: 44px; display: flex; align-items: center; }
+    .qr { margin: 6mm 0 4mm; }
+    .qr img { width: 34mm; height: 34mm; display: block; }
+    .zone { font-size: 12px; font-weight: 700; color: #0369a1; letter-spacing: 0.04em; text-transform: uppercase; }
+    .sub { font-size: 11px; color: #64748b; margin-top: 2mm; }
+
+    @media print {
+      .toolbar { display: none; }
+      body { background: white; }
+      .sheet { padding: 6mm; }
+      @page { margin: 8mm; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <h1>Loop — mystery card printer</h1>
+    <p>Enter a friend code (and optional zone name), then print. 8 cards per A4, cut along the dashed lines.</p>
+    <p>Sharable form: <code>/cards/?code=YOURCODE&amp;zone=Camden</code></p>
+    <div>
+      <input id="codeInput" placeholder="Friend code" maxlength="12" />
+      <input id="zoneInput" placeholder="Zone (optional)" maxlength="24" />
+      <button onclick="applyInputs()">Generate</button>
+      <button onclick="window.print()">Print</button>
+    </div>
+  </div>
+
+  <div class="sheet" id="sheet"></div>
+
+  <script>
+    var HOOKS = [
+      'Someone in this pub is on it.',
+      'Find out who else is here.',
+      '3 people nearby are already on it.',
+      'This place has a second room you can\u2019t see.'
+    ];
+
+    function getParams() {
+      var p = new URLSearchParams(location.search);
+      var code = (p.get('code') || '').toUpperCase();
+      if (!/^[A-Z0-9]{6,12}$/.test(code)) code = '';
+      return { code: code, zone: (p.get('zone') || '').slice(0, 24) };
+    }
+
+    function applyInputs() {
+      var code = document.getElementById('codeInput').value.trim().toUpperCase();
+      var zone = document.getElementById('zoneInput').value.trim();
+      var q = new URLSearchParams();
+      if (code) q.set('code', code);
+      if (zone) q.set('zone', zone);
+      location.search = q.toString();
+    }
+
+    function render() {
+      var cfg = getParams();
+      var sheet = document.getElementById('sheet');
+      if (!cfg.code) {
+        sheet.innerHTML = '<p style="grid-column:1/-1;color:#64748b;padding:20px;text-align:center">Enter a friend code above to generate cards.</p>';
+        return;
+      }
+      document.getElementById('codeInput').value = cfg.code;
+      document.getElementById('zoneInput').value = cfg.zone;
+
+      var link = 'https://loopappsupport.com/i/?ref=' + encodeURIComponent(cfg.code);
+      var qrSrc = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=0&data=' + encodeURIComponent(link);
+      var html = '';
+      for (var i = 0; i < 8; i++) {
+        var hook = HOOKS[i % HOOKS.length];
+        html +=
+          '<div class="card">' +
+            '<div class="hook">' + hook + '</div>' +
+            '<div class="qr"><img src="' + qrSrc + '" alt="QR" /></div>' +
+            (cfg.zone ? '<div class="zone">Only live in ' + cfg.zone.replace(/</g, '&lt;') + '</div>' : '<div class="zone">Only live around here</div>') +
+            '<div class="sub">Scan it. That\u2019s the whole instruction.</div>' +
+          '</div>';
+      }
+      sheet.innerHTML = html;
+    }
+
+    render();
+  </script>
+</body>
+</html>
